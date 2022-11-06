@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../Login/login_screen.dart';
 import '../../Signup/signup_screen.dart';
-import '../../../constants.dart';
+import 'package:chatter/constants.dart';
 
 class LoginAndSignupBtn extends StatelessWidget {
   const LoginAndSignupBtn({
@@ -44,7 +43,7 @@ class LoginAndSignupBtn extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-              primary: kPrimaryLightColor, elevation: 0),
+              backgroundColor: kPrimaryLightColor, elevation: 0),
           child: Text(
             "Sign Up".toUpperCase(),
             style: const TextStyle(color: Colors.black),

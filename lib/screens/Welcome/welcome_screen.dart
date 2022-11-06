@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../background.dart';
-import '../../responsive.dart';
+import 'package:chatter/background.dart';
 import 'components/login_signup_btn.dart';
 import 'components/welcome_image.dart';
 
@@ -13,28 +12,7 @@ class WelcomeScreen extends StatelessWidget {
     return const Background(
       child: SingleChildScrollView(
         child: SafeArea(
-          child: Responsive(
-            // desktop: Row(
-            //   mainAxisAlignment: MainAxisAlignment.end,
-            //   children: [
-            //     const Expanded(
-            //       child: WelcomeImage(),
-            //     ),
-            //     Expanded(
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.center,
-            //         children: const [
-            //           SizedBox(
-            //             width: 450,
-            //             child: LoginAndSignupBtn(),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            mobile: MobileWelcomeScreen(),
-          ),
+          child: MobileWelcomeScreen()
         ),
       ),
     );

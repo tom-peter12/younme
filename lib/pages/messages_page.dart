@@ -1,6 +1,5 @@
 import 'package:chatter/models/models.dart';
 import 'package:chatter/screens/screens.dart';
-import 'package:chatter/theme.dart';
 import 'package:chatter/widgets/widgets.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';

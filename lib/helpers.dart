@@ -1,3 +1,8 @@
+export 'theme.dart';
+export 'already_have_an_account_acheck.dart';
+export 'background.dart';
+export 'constants.dart';
+
 import 'dart:math';
 
 abstract class Helpers {

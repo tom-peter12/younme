@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../already_have_an_account_acheck.dart';
-import '../../../constants.dart';
-// import '../../home_screen.dart';
+import 'package:chatter/already_have_an_account_acheck.dart';
+import 'package:chatter/constants.dart';
 import '../../Signup/signup_screen.dart';
 import 'package:chatter/theme.dart';
 
@@ -51,7 +50,7 @@ class LoginForm extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.pushNamedAndRemoveUntil(
-                 context, '/home', ModalRoute.withName('/home'));
+                    context, '/home', ModalRoute.withName('/home'));
               },
               child: Text(
                 "Login".toUpperCase(),

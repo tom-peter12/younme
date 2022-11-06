@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../already_have_an_account_acheck.dart';
-import '../../../constants.dart';
+import 'package:chatter/already_have_an_account_acheck.dart';
+import 'package:chatter/constants.dart';
 import '../../Login/login_screen.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -20,7 +20,7 @@ class SignUpForm extends StatelessWidget {
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
             decoration: const InputDecoration(
-              hintText: "Your email",
+              hintText: "Your Phone Number",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(defaultPadding),
                 child: Icon(Icons.person),
