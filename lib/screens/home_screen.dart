@@ -2,6 +2,7 @@ import 'package:chatter/pages/calls_page.dart';
 import 'package:chatter/pages/contacts_page.dart';
 import 'package:chatter/pages/messages_page.dart';
 import 'package:chatter/pages/notifications_page.dart';
+import 'package:chatter/qrCode/qrCode.dart';
 import 'package:chatter/widgets/glowing_action_button.dart';
 import 'package:chatter/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -140,7 +141,7 @@ class __BottomNavigationBarState extends State<_BottomNavigationBar> {
                   color: AppColors.secondary,
                   icon: CupertinoIcons.add,
                   onPressed: () {
-                    // print('TODO on new message');
+                    _navigateToNextScreen(context);
                   },
                 ),
               ),
@@ -163,6 +164,10 @@ class __BottomNavigationBarState extends State<_BottomNavigationBar> {
         ),
       ),
     );
+  }
+  
+  void _navigateToNextScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const qrCode()));
   }
 }
 
