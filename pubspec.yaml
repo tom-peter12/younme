@@ -31,6 +31,8 @@ dependencies:
   jiffy: ^4.1.0
   barcode_widget: ^2.0.2
   flutter_qr_bar_scanner: ^3.0.2
+  # dio: ^4.0.6
+  # shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_lints: ^1.0.4

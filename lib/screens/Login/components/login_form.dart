@@ -19,13 +19,13 @@ class LoginForm extends StatelessWidget {
             // ignore: sdk_version_constructor_tearoffs
             keyboardType: TextInputType.phone,
             textInputAction: TextInputAction.next,
-            cursorColor: AppTheme.accentColor,
+            cursorColor: AppColors.secondary,
             onSaved: (phone) {},
             decoration: const InputDecoration(
               hintText: "Your phone number",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(defaultPadding),
-                child: Icon(Icons.person),
+                child: Icon(Icons.phone),
               ),
             ),
           ),
@@ -34,7 +34,7 @@ class LoginForm extends StatelessWidget {
             child: TextFormField(
               textInputAction: TextInputAction.done,
               obscureText: true,
-              cursorColor: AppTheme.accentColor,
+              cursorColor: AppColors.secondary,
               decoration: const InputDecoration(
                 hintText: "Your password",
                 prefixIcon: Padding(

@@ -1,3 +1,4 @@
+import 'package:chatter/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:chatter/constants.dart';
 
@@ -18,7 +19,7 @@ class OrDivider extends StatelessWidget {
             child: Text(
               "OR",
               style: TextStyle(
-                color: kPrimaryColor,
+                color: AppColors.secondary,
                 fontWeight: FontWeight.w600,
               ),
             ),
