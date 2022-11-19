@@ -2,16 +2,27 @@ import 'package:chatter/pages/calls_page.dart';
 import 'package:chatter/pages/contacts_page.dart';
 import 'package:chatter/pages/messages_page.dart';
 import 'package:chatter/pages/notifications_page.dart';
-import 'package:chatter/qrCode/qrCode.dart';
+import 'package:chatter/screens/qrCode/qrCode.dart';
+import 'package:chatter/screens/splash.dart';
 import 'package:chatter/widgets/glowing_action_button.dart';
 import 'package:chatter/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../helpers.dart';
 
-class HomeScreen extends StatelessWidget {
+final storage = FlutterSecureStorage();
+
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreen();
+}
+
+class _HomeScreen extends State<HomeScreen> {
+  // HomeScreen({Key? key}) : super(key: key);
 
   final ValueNotifier<int> pageIndex = ValueNotifier(0);
   final ValueNotifier<String> title = ValueNotifier('Messages');
@@ -58,10 +69,8 @@ class HomeScreen extends StatelessWidget {
         leading: Align(
           alignment: Alignment.centerRight,
           child: IconBackground(
-            icon: Icons.search,
-            onTap: () {
-              // print('TODO search');
-            },
+            icon: Icons.logout_outlined,
+            onTap: Logout,
           ),
         ),
         actions: [
@@ -81,6 +90,13 @@ class HomeScreen extends StatelessWidget {
         onItemSelected: _onNavigationItemSelected,
       ),
     );
+  }
+
+    Future<void> Logout() async {
+    await storage.deleteAll();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const SplashScreen()),
+        (Route<dynamic> route) => false);
   }
 }
 

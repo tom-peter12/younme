@@ -20,7 +20,7 @@ class LoginAndSignupBtn extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const LoginScreen();
+                    return LoginScreen();
                   },
                 ),
               );
@@ -37,7 +37,7 @@ class LoginAndSignupBtn extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return const SignUpScreen();
+                  return SignUpScreen();
                 },
               ),
             );
