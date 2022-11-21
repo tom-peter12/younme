@@ -32,6 +32,12 @@ class Contacts {
     required this.preshared_key,
   });
 
+    factory Contacts.fromMap(Map<String, dynamic> json) => new Contacts(
+        user_name: json['id'],
+        user_id: json['name'],
+        phone_number: json[''], preshared_key: '', public_key: ''
+      );
+
   Contacts copy({
     int? user_id,
     String? user_name,

@@ -30,8 +30,8 @@ class ContactsDatabase {
     await db.execute('''
       CREATE TABLE $tableContacts ( 
         ${ContactsField.user_id} $idType, 
-        ${ContactsField.user_name} $textType,
-        ${ContactsField.phone_number} $textType,
+        ${ContactsField.user_name} $textType UNIQUE, 
+        ${ContactsField.phone_number} $textType UNIQUE,
         ${ContactsField.public_key} $textType,
         ${ContactsField.preshared_key} $textType
       )
@@ -55,6 +55,33 @@ class ContactsDatabase {
       whereArgs: [contacts.user_id],
     );
   }
+
+  Future<Contacts> readContacts() async {
+    final db = await instance.database;
+
+    final maps = await db.query(
+      tableContacts,
+      columns: ContactsField.values,
+      // where: '${ContactsField.user_name} = "string"',
+    );
+
+    if (maps.isNotEmpty) {
+      return Contacts.fromJson(maps.first);
+    } else {
+      throw Exception('ID  not found');
+    }
+  }
+
+  // Future<List<Contacts>> getContacts() async {
+  //   Database db = await instance.database;
+  //   var cont = await db.query(
+  //     tableContacts,
+  //     columns: ContactsField.values,
+  //   );
+  //   List<Contacts> ContactList =
+  //       cont.isNotEmpty ? cont.map((c) => Contacts.fromMap(c)).toList() : [];
+  //   return ContactList;
+  // }
 
   Future close() async {
     final db = await instance.database;

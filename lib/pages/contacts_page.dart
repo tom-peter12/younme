@@ -1,12 +1,17 @@
+import 'package:chatter/logs.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/contacts_screen.dart';
 
 class ContactsPage extends StatelessWidget {
   const ContactsPage({Key? key}) : super(key: key);
 
+  
+
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('ContactsPage'),
+    return  Center(
+      child: ListContacts(),
     );
   }
 }

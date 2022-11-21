@@ -276,7 +276,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   "public_key": "string"
 }""";
 
-    var url = Uri.parse(ADDRESS+ 'register');
+    var url = Uri.parse(ADDRESS + 'register');
     var res = await http.post(url, headers: headers, body: data);
     if (res.statusCode != 200) {
       throw Exception('http.post error: statusCode= ${res.statusCode}');
@@ -325,7 +325,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       print("there is a response ");
 
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => LoginScreen()),
           (Route<dynamic> route) => false);
     } else {
       throw Exception('http.post error: statusCode= ${res.statusCode}');
