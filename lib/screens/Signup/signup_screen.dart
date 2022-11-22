@@ -325,7 +325,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       print("there is a response ");
 
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => LoginScreen()),
+          MaterialPageRoute(builder: (context) => HomeScreen()),
           (Route<dynamic> route) => false);
     } else {
       throw Exception('http.post error: statusCode= ${res.statusCode}');

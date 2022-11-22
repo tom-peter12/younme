@@ -33,12 +33,12 @@ class _SecondState extends State<Second> {
   String? _qrInfo = 'Scan a QR/Bar code';
 
   Future<String> generate() async {
-    String? username = await storage.read(key: "username");
-    String? number = await storage.read(key: "number");
+    // String? username = await storage.read(key: "username");
+    // String? number = await storage.read(key: "number");
 
     var contactInfo = {
-      "username": username!,
-      "phone_number": number!,
+      "username": "username!",
+      "phone_number": "number",
       "public_key": "string",
       "psk": "presharedkey"
     };
@@ -56,6 +56,15 @@ class _SecondState extends State<Second> {
   qrCallback(String? code) {
     setState(() {
       camState = false;
+      var readCode = json.decode(code!);
+      number = readCode["phone_number"];
+      username = readCode["username"];
+      publickey = readCode["public_key"];
+      psk = readCode["psk"];
+
+      // print(username);
+      // print(readCode);
+
       _qrInfo = code;
     });
   }
@@ -106,9 +115,15 @@ class _SecondState extends State<Second> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        saved ? Text("Saved") : Text("Not Saved"),
+                        saved ? Text("Saved") : Text(""),
                         Text(
-                          "Code :" + (_qrInfo!),
+                          "Username :" + username,
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                        Text(
+                          "Phone Number :" + number,
                           style: const TextStyle(
                             fontSize: 15,
                           ),
@@ -124,7 +139,7 @@ class _SecondState extends State<Second> {
                             // ),
                             // ignore: avoid_print
                             // saveContact(_qrInfo);
-                            addOrUpdateNote(snapshot.data!);
+                            addOrUpdateNote(_qrInfo);
                           },
                           child: Container(
                             child: const Text("Save"),
@@ -164,33 +179,39 @@ class _SecondState extends State<Second> {
   Future addContact(cont) async {
     var data = json.decode(cont);
     final contact = Contacts(
-      phone_number: data['phone_number'],
-      user_name: data['username'],
-      public_key: data['public_key'],
-      preshared_key: data['psk'],
+      phone_number: number,
+      user_name: username,
+      public_key: publickey,
+      preshared_key: psk,
     );
 
     await ContactsDatabase.instance.create(contact);
   }
 
   void addOrUpdateNote(cont) async {
-    Contacts? cont = (await ContactsDatabase.instance.readContacts());
-    // print(cont.user_name!);
-    print("oui oui oiu");
+    
+    Contacts? contacts = (await ContactsDatabase.instance.readContacts());
+    print("cont");
+    print(username);
+    print(number);
+
+  
 
     var _formKey;
     // final isValid = cont.currentState!.validate();
 
     if (true) {
-      final isUpdating = widget.contacts != null;
+      // final isUpdating = widget.contacts != null;
 
-      if (isUpdating) {
+      if (false) {
         await updateContact(cont);
+        print("you are here updating brev");
         setState(() {
           saved = true;
         });
       } else {
-        // await addContact(cont);
+        await addContact(cont);
+        print("you are here creating brev");
         setState(() {
           saved = true;
         });

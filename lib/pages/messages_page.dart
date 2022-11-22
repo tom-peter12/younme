@@ -61,11 +61,16 @@ class _MessagesPage extends State<MessagePage> {
               )
             ],
           );
+        } else if (snapshot.data == null) {
+          return Center(
+            child: Text("No messages"),
+          );
         } else {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(),
           );
         }
+     
       },
       // child: CustomScrollView(
       //   slivers: [
@@ -95,10 +100,11 @@ class _MessagesPage extends State<MessagePage> {
   loadCWM() async {
     if (storage.read(key: "token") == null) {
       print("it is null bruh!");
-
-// you need to reroute the user to the login page
-
     }
+
+// // you need to reroute the user to the login page
+
+//     }
 
     String? token = await storage.read(key: "token");
     // print(token);
@@ -106,17 +112,42 @@ class _MessagesPage extends State<MessagePage> {
     // print(token)
     var headers = {
       'accept': 'application/json',
-      'Authorization': "Bearer " + token.toString(),
+      'Authorization':
+     "Bearer " + token.toString(),
+            'Content-Type': 'application/json',
     };
 
+//     var data = '''{
+//   "message_con": "string",
+//   "to": "string"
+// }''';
+
+//     var url = Uri.parse(ADDRESS + 'loadmessage');
+//     print("I am here");
+//     var res = await http.post(url, headers: headers, body: data);
+
+//     if (res.statusCode != 200) {
+//       throw Exception('http.get error: statusCode= ${res.statusCode}');
+//     }
+//     print("Right here, right here!\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+//     // print(res.body);
+//     return res.body;
+
+
+    //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJzdHJpbmciLCJwYXNzd29yZF9oYXNoIjoiNDczMjg3ZjgyOThkYmE3MTYzYTg5NzkwODk1OGY3YzBlYWU3MzNlMjVkMmUwMjc5OTJlYTJlZGM5YmVkMmZhOCIsIm5hbWUiOiJzdHJpbmciLCJsTmFtZSI6InN0cmluZyIsInBob25lX251bWJlciI6InN0cmluZyIsInB1YmxpY19rZXkiOm51bGx9.GkCiudtlvflgvIZ6Ktrrt0e1kPOIwA8MkCXyR3HkESA',
+
+    // };
+
+    var data = '''{
+  "message_con": "string",
+  "to": "string"
+}''';
+
     var url = Uri.parse(ADDRESS + 'loadmessage');
-    var res = await http.get(url, headers: headers);
-    if (res.statusCode != 200) {
-      throw Exception('http.get error: statusCode= ${res.statusCode}');
-    }
-    print("Right here, right here!\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    // print(res.body);
-    return res.body;
+    var res = await http.post(url, headers: headers, body: data);
+    if (res.statusCode != 200)
+      throw Exception('http.post error: statusCode= ${res.statusCode}');
+    print(res.body);
   }
 }
 

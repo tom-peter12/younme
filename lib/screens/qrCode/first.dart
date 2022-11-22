@@ -70,31 +70,31 @@ class _FirstState extends State<First> {
                     // contactInfo == ''
                     // ? const Text('')
 
-                    InkWell(
-                      onTap: () {
-                        // ignore: avoid_print
+                    // InkWell(
+                    //   onTap: () {
+                    //     // ignore: avoid_print
 
-                        // Navigator.of(context).pushReplacement(
-                        //   MaterialPageRoute(
-                        //     builder: (context) => SignUpScreen(),
-                        //   ),
-                        // ),
-                        // ignore: avoid_print
-                        addOrUpdateNote(snapshot.data!);
-                      },
-                      child: Container(
-                        child: const Text("Save"),
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: const ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
-                            ),
-                            color: Colors.redAccent),
-                      ),
-                    ),
+                    //     // Navigator.of(context).pushReplacement(
+                    //     //   MaterialPageRoute(
+                    //     //     builder: (context) => SignUpScreen(),
+                    //     //   ),
+                    //     // ),
+                    //     // ignore: avoid_print
+                    //     addOrUpdateNote(snapshot.data!);
+                    //   },
+                    //   child: Container(
+                    //     child: const Text("Save"),
+                    //     width: double.infinity,
+                    //     alignment: Alignment.center,
+                    //     padding: const EdgeInsets.symmetric(vertical: 12),
+                    //     decoration: const ShapeDecoration(
+                    //         shape: RoundedRectangleBorder(
+                    //           borderRadius:
+                    //               BorderRadius.all(Radius.circular(4)),
+                    //         ),
+                    //         color: Colors.redAccent),
+                    //   ),
+                    // ),
                     BarcodeWidget(
                       barcode: Barcode.qrCode(
                         errorCorrectLevel: BarcodeQRCorrectionLevel.high,
@@ -129,6 +129,7 @@ class _FirstState extends State<First> {
 
     Future addContact(cont) async {
       var data = json.decode(cont);
+      
       final contact = Contacts(
         phone_number: data['phone_number'],
         user_name: data['username'],

@@ -1,3 +1,4 @@
+import 'package:chatter/screens/splash.dart';
 import 'package:flutter/material.dart';
 import '../../Login/login_screen.dart';
 import '../../Signup/signup_screen.dart';
@@ -20,7 +21,7 @@ class LoginAndSignupBtn extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return LoginScreen();
+                    return SplashScreen();
                   },
                 ),
               );
