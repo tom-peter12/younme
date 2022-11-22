@@ -27,8 +27,8 @@ class _HomeScreen extends State<HomeScreen> {
   final ValueNotifier<int> pageIndex = ValueNotifier(0);
   final ValueNotifier<String> title = ValueNotifier('Messages');
 
-  final pages = const [
-    MessagesPage(),
+  final pages =  [
+    MessagePage(),
     NotificationsPage(),
     CallsPage(),
     ContactsPage(),

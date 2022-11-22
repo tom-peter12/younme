@@ -36,17 +36,16 @@ class ContactsDatabase {
         ${ContactsField.preshared_key} $textType
       )
     ''');
-  
 
-  await db.execute('''
-      CREATE TABLE $tableContacts ( 
-        ${ContactsField.user_id} $idType, 
-        ${ContactsField.user_name} $textType UNIQUE, 
-        ${ContactsField.phone_number} $textType UNIQUE,
-        ${ContactsField.public_key} $textType,
-        ${ContactsField.preshared_key} $textType
-      )
-    ''');
+    // await db.execute('''
+    //     CREATE TABLE $tableContacts (
+    //       ${ContactsField.user_id} $idType,
+    //       ${ContactsField.user_name} $textType UNIQUE,
+    //       ${ContactsField.phone_number} $textType UNIQUE,
+    //       ${ContactsField.public_key} $textType,
+    //       ${ContactsField.preshared_key} $textType
+    //     )
+    //   ''');
   }
 
   Future<Contacts> create(Contacts contact) async {
@@ -67,7 +66,7 @@ class ContactsDatabase {
     );
   }
 
-  Future<Contacts> readContacts() async {
+  Future<Contacts?> readContacts() async {
     final db = await instance.database;
 
     final maps = await db.query(
@@ -79,7 +78,7 @@ class ContactsDatabase {
     if (maps.isNotEmpty) {
       return Contacts.fromJson(maps.first);
     } else {
-      throw Exception('ID  not found');
+      return null;
     }
   }
 
@@ -94,15 +93,14 @@ class ContactsDatabase {
   //   return ContactList;
   // }
 
-    Future<int> delete() async {
-      final db = await instance.database;
+  Future<int> delete() async {
+    final db = await instance.database;
 
-      return await db.delete(
-        tableContacts,
-        where: '${ContactsField.user_name} = ?',
-      );
-    }
-
+    return await db.delete(
+      tableContacts,
+      where: '${ContactsField.user_name} = ?',
+    );
+  }
 
   Future close() async {
     final db = await instance.database;

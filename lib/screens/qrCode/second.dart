@@ -174,8 +174,8 @@ class _SecondState extends State<Second> {
   }
 
   void addOrUpdateNote(cont) async {
-    Contacts cont = (await ContactsDatabase.instance.readContacts());
-    print(cont.user_name);
+    Contacts? cont = (await ContactsDatabase.instance.readContacts());
+    // print(cont.user_name!);
     print("oui oui oiu");
 
     var _formKey;
